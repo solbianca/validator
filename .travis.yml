@@ -15,6 +15,10 @@ install:
   - wget -c -nc --retry-connrefused --tries=0 http://codeception.com/releases/2.2.8/codecept.phar
   - chmod +x codecept.phar
   - php codecept.phar --version
+  
+before_script:
+  - composer install
+  - php codecept.phar build
 
 script:
   - php codecept.phar run
