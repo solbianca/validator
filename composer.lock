@@ -4,49 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f1eeb5ff968a3ecbbc122b27127e13e",
-    "packages": [
-        {
-            "name": "solbianca/vardumper",
-            "version": "1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/solbianca/vardumper.git",
-                "reference": "f7cf9fe97591e5f6311a44db948a6d804294750b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/solbianca/vardumper/zipball/f7cf9fe97591e5f6311a44db948a6d804294750b",
-                "reference": "f7cf9fe97591e5f6311a44db948a6d804294750b",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "class",
-            "autoload": {
-                "psr-4": {
-                    "Solbianca\\VarDumper\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander Fedorov",
-                    "email": "neivweb@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "keywords": [
-                "php",
-                "var_dump"
-            ],
-            "time": "2016-10-22T10:56:59+00:00"
-        }
-    ],
+    "content-hash": "815d2bc17280b3d13268060694a7abc6",
+    "packages": [],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
