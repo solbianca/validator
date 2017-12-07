@@ -4,4 +4,5 @@ php:
     - 7.1
     - 7.2
 
-php codecept run
+script:
+  - php codecept run
