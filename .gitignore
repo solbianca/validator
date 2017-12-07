@@ -1,0 +1,38 @@
+# vagrant image files
+.vagrant
+Vagrantfile
+/vagrant
+
+# phpstorm project files
+.idea
+
+# netbeans project files
+nbproject
+
+# zend studio for eclipse project files
+.buildpath
+.project
+.settings
+
+# windows thumbnail cache
+Thumbs.db
+
+# Mac DS_Store Files
+.DS_Store
+
+# vedor
+/vendor
+
+# ignore codeception
+codecept.phar
+tests/_output/*
+
+# ignore phpmd
+phpmd.phar
+
+# ignore phpcpd
+phpcpd.phar
+
+# ignore deployer
+deployer.phar
+deploy.php

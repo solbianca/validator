@@ -1,0 +1,25 @@
+{
+  "name": "solbianca/validator",
+  "type": "library",
+  "description": "Easy to use, highly customisable PHP validator.",
+  "keywords": [
+    "validation"
+  ],
+  "homepage": "https://github.com/solbianca/validator",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexander Fedorov",
+      "email": "neivweb@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1",
+    "solbianca/vardumper": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "SolBianca\\Validator\\": "src/"
+    }
+  }
+}
