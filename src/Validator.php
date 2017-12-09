@@ -88,10 +88,13 @@ class Validator implements ValidatorInterface
             $rules = $fieldData['rules'];
 
             foreach ($rules as $ruleName => $ruleArguments) {
-                if (is_string($ruleArguments)) {
+                if (is_int($ruleName) && is_string($ruleArguments)) {
                     $ruleName = $ruleArguments;
                     $ruleArguments = [];
+                } elseif (is_string($ruleName) && !is_array($ruleArguments)) {
+                    $ruleArguments = [$ruleArguments];
                 }
+
                 $continue = $this->validateAgainstRule($field, $value, $ruleName, $ruleArguments);
                 if (!$continue) {
                     break;

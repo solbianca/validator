@@ -57,6 +57,24 @@ class MatchesRuleTest extends \Codeception\Test\Unit
                 'args' => [],
                 'result' => RuleException::class,
             ],
+            [
+                'value' => 12,
+                'inputs' => ['age' => ['value' => 12, 'rules' => 'int']],
+                'args' => [null],
+                'result' => RuleException::class,
+            ],
+            [
+                'value' => 12,
+                'inputs' => ['age' => ['value' => 12, 'rules' => 'int']],
+                'args' => [true],
+                'result' => RuleException::class,
+            ],
+            [
+                'value' => 12,
+                'inputs' => ['age' => ['value' => 12, 'rules' => 'int']],
+                'args' => [12],
+                'result' => RuleException::class,
+            ],
         ];
     }
 

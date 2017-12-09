@@ -114,3 +114,137 @@ $validator->validate([
 
 ## Rules
 
+#### Array
+
+If the value is an array.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => [10, 20], 'rules' => ['array']],
+]);
+````
+
+#### Between
+
+Checks if the value is within the intervals defined. This check is inclusive, so 5 is between 5 and 10.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 5, 'rules' => ['between' => [5, 10]]],
+]);
+````
+
+#### Bool
+
+If the value is a boolean.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => true, 'rules' => ['bool']],
+]);
+````
+
+#### Email
+
+If the value is a valid email.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 'mail@example.com', 'rules' => ['email']],
+]);
+````
+
+#### Int
+
+If the value is an integer, including numbers within strings. 1 and '1' are both classed as integers.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 42, 'rules' => ['int']],
+]);
+````
+
+#### Ip
+
+If the value is a valid IP address.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => '127.0.0.1', 'rules' => ['ip']],
+]);
+````
+
+#### Matches
+
+Checks if one given input matches the other. For example, checking if password matches password_confirm.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 1, 'rules' => ['int', 'matches' => 'other_input']],
+    'other_input' => ['value' => 1, 'rules' => ['int']]
+]);
+````
+
+#### Max
+
+Check if string length is less than or equal to given int. To check the size of a number, pass the optional number option.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 5, 'rules' => ['max' => 10]],
+    'other_input' => ['value' => 0.5, 'rules' => ['max' => [1.0, 'number']]],
+]);
+````
+
+#### Mix
+
+Check if string length is greater than or equal to given int. To check the size of a number, pass the optional number option.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 5, 'rules' => ['min' => 1]],
+    'other_input' => ['value' => 0.5, 'rules' => ['min' => [0.0, 'number']]],
+]);
+````
+
+#### Number
+
+If the value is a number, including numbers within strings.
+
+> Numeric strings consist of optional sign, any number of digits, optional decimal part and optional exponential part. Thus +0123.45e6 is a valid numeric value. Hexadecimal (e.g. 0xf4c3b00c), Binary (e.g. 0b10100111001), Octal (e.g. 0777) notation is allowed too but only without sign, decimal and exponential part.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => '5', 'rules' => ['number']],
+]);
+````
+
+#### Regex
+
+If the given input has a match for the regular expression given.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 'bag', 'rules' => ['regex' => '/b[aeiou]g/']],
+]);
+````
+
+#### Required
+
+If the value is present.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => true, 'rules' => ['required']],
+]);
+````
+
+#### Url
+
+If the value is formatted as a valid URL.
+
+````php
+$validator->validate([
+    'some_input' => ['value' => 'http://example.com', 'rules' => ['url']],
+]);
+````
