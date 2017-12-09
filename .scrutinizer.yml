@@ -1,0 +1,8 @@
+imports:
+    - php
+
+tools:
+    # disable copy paste detector and similarity analyzer as they have no real value
+    # and a huge bunch of false-positives
+    php_sim: false
+    php_cpd: false

@@ -5,6 +5,11 @@ This is an easy to use and customisable PHP validator.
 
 **Note: This package is under development and not recommended for production.**
 
+[![Build Status](https://scrutinizer-ci.com/g/solbianca/validator/badges/build.png?b=master)](https://scrutinizer-ci.com/g/solbianca/validator/build-status/master)
+[![Build Status](https://travis-ci.org/solbianca/validator.svg?branch=master)](https://travis-ci.org/solbianca/validator)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/solbianca/validator/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/solbianca/validator/?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/7c211c8845a63229e8cd/maintainability)](https://codeclimate.com/github/solbianca/validator/maintainability)
+
 ## Installing
 
 Install using Composer.
