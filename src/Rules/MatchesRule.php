@@ -6,7 +6,6 @@ namespace SolBianca\Validator\Rules;
 
 use SolBianca\Validator\Exceptions\RuleException;
 use SolBianca\Validator\Interfaces\RuleInterface;
-use Solbianca\VarDumper\VarDumper;
 
 class MatchesRule implements RuleInterface
 {
