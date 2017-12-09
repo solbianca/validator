@@ -40,7 +40,7 @@ class MessageBag implements MessageBagInterface
     public function first(string $key = null): ?string
     {
         $messages = is_null($key) ? $this->flat() : $this->get($key);
-        return (count($messages) > 0) ? $messages[0] : null;
+        return (is_array($messages) && count($messages) > 0) ? $messages[0] : null;
     }
 
     /**
