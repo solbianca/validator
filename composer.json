@@ -3,7 +3,8 @@
   "type": "library",
   "description": "Easy to use, highly customisable PHP validator.",
   "keywords": [
-    "validation"
+    "validation",
+    "validator"
   ],
   "homepage": "https://github.com/solbianca/validator",
   "license": "MIT",
@@ -15,6 +16,9 @@
   ],
   "require": {
     "php": ">=7.1"
+  },
+  "require-dev": {
+    "codeception/codeception": "^2.1"
   },
   "autoload": {
     "psr-4": {
