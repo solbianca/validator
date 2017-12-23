@@ -11,7 +11,13 @@ This is an easy to use and customisable PHP validator.
 
 ## Installing
 
-Install using Composer.
+Install via  composer
+
+````bash
+composer require solbianca/validator
+````
+
+or add to composer.json
 
 ```json
 {
@@ -34,9 +40,9 @@ $validator->validate([
 ]);
 
 if($validator->passed()) {
-    echo 'Validation passed, woo hoo!';
+    echo 'Validation passed!';
 } else {
-    echo '<pre>', var_dump($v->errors()->all()), '</pre>';
+    var_dump($validator->errors()->all();
 }
 ```
 

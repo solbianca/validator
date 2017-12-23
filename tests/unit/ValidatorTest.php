@@ -267,24 +267,4 @@ class ValidatorTest extends \Codeception\Test\Unit
         $messages = $reflectionProperty->getValue($this->validator);
         return $messages;
     }
-
-    public function testBefore()
-    {
-        $this->validator->before(function () {
-            throw new LogicException("For test before.");
-        });
-        $this->tester->expectException(LogicException::class, function () {
-            $this->validator->validate(['age' => ['value' => 20, 'rules' => ['test'], 'alias' => 'Age']]);
-        });
-    }
-
-    public function testAfter()
-    {
-        $this->validator->after(function () {
-            throw new LogicException("For test after.");
-        });
-        $this->tester->expectException(LogicException::class, function () {
-            $this->validator->validate(['age' => ['value' => 20, 'rules' => ['int'], 'alias' => 'Age']]);
-        });
-    }
 }

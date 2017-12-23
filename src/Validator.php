@@ -76,7 +76,6 @@ class Validator implements ValidatorInterface
      */
     public function validate(array $dataToValidate): ValidatorInterface
     {
-        $this->runBeforeCallbacks();
         $this->dataToValidate = $dataToValidate;
 
         foreach ($dataToValidate as $field => $fieldData) {
@@ -101,8 +100,6 @@ class Validator implements ValidatorInterface
                 }
             }
         }
-
-        $this->runAfterCallbacks();
 
         return $this;
     }
@@ -364,49 +361,5 @@ class Validator implements ValidatorInterface
         }
 
         throw new ValidatorRuleException("Rule must be callable, full class name as string or object which implemented RuleInterface.");
-    }
-
-    /**
-     * Run callbacks before validation
-     */
-    private function runBeforeCallbacks()
-    {
-        foreach ($this->before as $before) {
-            call_user_func_array($before, [$this]);
-        }
-    }
-
-    /**
-     * Register an before validation callback.
-     *
-     * @param  callable $closure
-     * @return ValidatorInterface
-     */
-    public function before(callable $closure): ValidatorInterface
-    {
-        $this->before[] = $closure;
-        return $this;
-    }
-
-    /**
-     * Run callbacks after validation
-     */
-    private function runAfterCallbacks()
-    {
-        foreach ($this->after as $after) {
-            call_user_func_array($after, [$this]);
-        }
-    }
-
-    /**
-     * Register an after validation callback.
-     *
-     * @param  callable $closure
-     * @return ValidatorInterface
-     */
-    public function after(callable $closure): ValidatorInterface
-    {
-        $this->after[] = $closure;
-        return $this;
     }
 }
