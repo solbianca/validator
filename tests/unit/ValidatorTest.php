@@ -1,13 +1,13 @@
 <?php
 
-require_once 'NullRule.php';
-
 use SolBianca\Validator\Validator;
 use SolBianca\Validator\Rules\IntRule;
 use SolBianca\Validator\Exceptions\ValidatorRuleException;
 use SolBianca\Validator\Interfaces\MessageBagInterface;
 use SolBianca\Validator\Interfaces\ValidatorInterface;
 use SolBianca\Validator\Exceptions\ValidatorExceptions;
+use Codeception\Util\Stub;
+use SolBianca\Validator\Interfaces\RuleInterface;
 
 class ValidatorTest extends \Codeception\Test\Unit
 {
@@ -22,15 +22,40 @@ class ValidatorTest extends \Codeception\Test\Unit
     private $validator;
 
     /**
+     * @var \SolBianca\Validator\Interfaces\RuleInterface
+     */
+    private $subbedRule;
+
+    /**
      * Initiate before test
      */
     protected function _before()
     {
         $this->validator = new \SolBianca\Validator\Validator();
+        $this->subbedRule = $this->createStubbedRule();
+    }
+
+    private function createStubbedRule()
+    {
+        return Stub::makeEmpty(
+            RuleInterface::class,
+            [
+                'run' => Stub::atLeastOnce(function () {
+                    return true;
+                }),
+                'errorMessage' => Stub::atLeastOnce(function () {
+                    return 'error';
+                }),
+                'canSkip' => Stub::atLeastOnce(function () {
+                    return true;
+                }),
+            ]
+        );
     }
 
     public function testValidate()
     {
+        $this->tester->assertEquals([], $this->validator->errors()->all());
         $this->validator->addRule('sex', function ($value) {
             return in_array($value, ['male', 'female']);
         });
@@ -182,18 +207,19 @@ class ValidatorTest extends \Codeception\Test\Unit
 
     public function testAddRuleAsClass()
     {
-        $this->validator->addRule('test', new NullRule());
+
+        $this->validator->addRule('test', new IntRule());
         $rules = $this->getValidatorRulesMap();
         $this->tester->assertArrayHasKey('test', $rules);
-        $this->tester->assertInstanceOf(NullRule::class, $rules['test']);
+        $this->tester->assertInstanceOf(IntRule::class, $rules['test']);
     }
 
     public function testAddRuleAsString()
     {
-        $this->validator->addRule('test', NullRule::class);
+        $this->validator->addRule('test', IntRule::class);
         $rules = $this->getValidatorRulesMap();
         $this->tester->assertArrayHasKey('test', $rules);
-        $this->tester->assertEquals(NullRule::class, $rules['test']);
+        $this->tester->assertEquals(IntRule::class, $rules['test']);
     }
 
     public function testAddRuleAsCalback()
@@ -212,16 +238,16 @@ class ValidatorTest extends \Codeception\Test\Unit
         $this->tester->assertArrayHasKey('int', $rules);
         $this->tester->assertEquals(IntRule::class, $rules['int']);
 
-        $this->validator->addRule('int', NullRule::class);
+        $this->validator->addRule('int', $this->subbedRule);
         $rules = $this->getValidatorRulesMap();
         $this->tester->assertArrayHasKey('int', $rules);
-        $this->tester->assertEquals(NullRule::class, $rules['int']);
+        $this->tester->assertInstanceOf(RuleInterface::class, $rules['int']);
     }
 
     public function testAddRulesWithEmptyName()
     {
         $this->tester->expectException(ValidatorRuleException::class, function () {
-            $this->validator->addRule('', NullRule::class);
+            $this->validator->addRule('', $this->subbedRule);
         });
     }
 
