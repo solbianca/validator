@@ -5,7 +5,7 @@ filter:
   paths: [src/*]
 
 tools:
-  external_code_coverage: true
+  external_code_coverage: false
   php_analyzer: true
   php_mess_detector: true
   sensiolabs_security_checker: true
