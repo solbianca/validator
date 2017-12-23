@@ -49,16 +49,6 @@ class Validator implements ValidatorInterface
     /**
      * @var array
      */
-    private $before = [];
-
-    /**
-     * @var array
-     */
-    private $after = [];
-
-    /**
-     * @var array
-     */
     private $errors = [];
 
     /**
